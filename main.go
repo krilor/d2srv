@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"os"
 
+	flag "github.com/spf13/pflag"
 	"oss.terrastruct.com/d2/d2layouts/d2dagrelayout"
 	"oss.terrastruct.com/d2/d2lib"
 	"oss.terrastruct.com/d2/d2renderers/d2svg"
@@ -47,8 +48,16 @@ func getRoot(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
+	var port = flag.IntP("port", "p", 8080, "port for listening")
+
+	flag.Parse()
+
 	http.HandleFunc("/", getRoot)
-	err := http.ListenAndServe(":3333", nil)
+
+	fmt.Printf("serving on :%d\n", *port)
+
+	err := http.ListenAndServe(fmt.Sprintf(":%d", *port), nil)
 
 	if errors.Is(err, http.ErrServerClosed) {
 		fmt.Printf("server closed\n")
