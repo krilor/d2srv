@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"net/url"
 	"os"
 
 	"oss.terrastruct.com/d2/d2layouts/d2dagrelayout"
@@ -16,8 +17,14 @@ import (
 
 func getRoot(w http.ResponseWriter, r *http.Request) {
 
+	input, err := url.QueryUnescape(r.URL.RawQuery)
+
+	if err != nil {
+		fmt.Printf("not able to unescape query: %s \n", err)
+	}
+
 	ruler, _ := textmeasure.NewRuler()
-	diagram, _, _ := d2lib.Compile(context.Background(), "x -> y", &d2lib.CompileOptions{
+	diagram, _, _ := d2lib.Compile(context.Background(), input, &d2lib.CompileOptions{
 		Layout:  d2dagrelayout.Layout,
 		Ruler:   ruler,
 		ThemeID: d2themescatalog.GrapeSoda.ID,
