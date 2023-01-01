@@ -29,17 +29,12 @@ It will look something like this:
   alt = 'd2.reperto.no is served with cloudflare as a cache and the origin server on OCI'
   src = 'https://d2.reperto.no/svg?
     direction: right;
-    browser -> cloudflare;
-    cloudflare -> oci.nginx;
-    oci.nginx -> oci.d2srv;'
+    browser->cloudflare;
+    cloudflare->oci.nginx;
+    oci.nginx->oci.d2srv;'
 />
 
-![d2.reperto.no is served with cloudflare as a cache and the origin server on OCI](https://d2.reperto.no/svg?
-direction: right;
-browser -> cloudflare;
-cloudflare -> oci.nginx;
-oci.nginx -> oci.d2srv;
-)
+![d2.reperto.no is served with cloudflare as a cache and the origin server on OCI](https://d2.reperto.no/svg?direction:right;browser->cloudflare;cloudflare->oci.nginx;oci.nginx->oci.d2srv;)
 
 Make sure to consider:
 
