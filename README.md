@@ -34,6 +34,13 @@ It will look something like this:
     oci.nginx -> oci.d2srv;'
 />
 
+![d2.reperto.no is served with cloudflare as a cache and the origin server on OCI](https://d2.reperto.no/svg?
+direction: right;
+browser -> cloudflare;
+cloudflare -> oci.nginx;
+oci.nginx -> oci.d2srv;
+)
+
 Make sure to consider:
 
 1. use the `<img>` html tag for the best cross-platform experience (like vscode markdown preview)
